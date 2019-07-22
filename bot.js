@@ -28,13 +28,13 @@ const getUsernameFromId = id => {
     return user ? user.name : 'Unknown member'
 }
 
-rtm.on('message', message => {
+rtm.on('message', async message => {
     if(message.text){
         console.log(message)
         console.log(message.text)
         const userName = getUsernameFromId(message.user) 
         if(userName != robotName){
-            rtm.sendMessage(`${userName} said: ${message.text}`, message.channel);
+            await rtm.sendMessage(`${userName} said: ${message.text}`, message.channel);
         }
     }
 })
