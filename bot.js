@@ -42,6 +42,7 @@ slackController.setupWebserver(process.env.PORT, function(err, webserver){
 })
 
 slackController.on('message', function(bot, message) {
+  bot.replyAcknowledge() 
   bot.reply(message,'Hello.')
 })
 
