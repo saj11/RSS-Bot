@@ -1,40 +1,28 @@
 "use strict"
 require('dotenv').config()
 
-const bodyParser = require('body-parser')
 const botkit = require('botkit')
-const express = require('express')
-const http = require('http')
 
 const obtainFeed = require('./feed')
-
-const app = express()
-const server = http.createServer(app)
-const router = express.Router()
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
 
 //Configuration
 var slackController = botkit.slackbot({
     json_file_store: __dirname + '/.data/db/',
     debug: true,
-    clientSigningSecret: process.env.CLIENT_SIGNING_SECRET,
+    clientSigningSecret: process.env.SLACK_CLIENT_SIGNING_SECRET,
   })
 
 //Connect Node app to Slack app
 slackController.configureSlackApp({
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    clientSigningSecret: process.env.CLIENT_SIGNING_SECRET,
+    clientId: process.env.SLACK_CLIENT_ID,
+    clientSecret: process.env.SLACK_CLIENT_SECRET,
+    clientSigningSecret: process.env.SLACK_CLIENT_SIGNING_SECRET,
     scopes: ['commands', 'bot'],
 })
 
 //Bot configuration
 var bot = slackController.spawn({
-    token: process.env.BOT_TOKEN,
+    token: process.env.SLACK_BOT_TOKEN,
     incoming_webhook: {
       url: 'https://hooks.slack.com/services/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IS'
     }
