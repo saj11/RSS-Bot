@@ -24,7 +24,7 @@ slackController.configureSlackApp({
 var bot = slackController.spawn({
     token: process.env.SLACK_BOT_TOKEN,
     incoming_webhook: {
-      url: 'https://hooks.slack.com/services/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IS'
+      url: 'https://hooks.slack.com/services/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'
     }
   }).startRTM()
 
