@@ -41,7 +41,7 @@ slackController.setupWebserver(process.env.PORT, function(err, webserver){
     )
 })
 
-slackController.hears('message', 'direct_message', function(bot, message) {
+slackController.on('message', function(bot, message) {
   bot.reply(message,'Hello.')
 })
 
