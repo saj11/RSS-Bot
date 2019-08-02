@@ -50,7 +50,7 @@ slackController.on('direct_message', async function(bot, message) {
 })
 
 slackController.on('direct_mention', async function(bot, message) {
-
+  bot.reply(message,'I heard a direct message')
 })
 
 slackController.hears('webhook', 'direct_message', async function(bot, message) {
