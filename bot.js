@@ -49,12 +49,20 @@ slackController.hears('aa', 'direct_message', async function(bot, message) {
   bot.reply(message,'fuck.')
 })
 
+slackController.on('message_received', async function(bot, message) {
+  bot.reply(message,'Message received')
+})
+
+slackController.on('ambient', async function(bot, message) {
+  bot.reply(message,'Ambient')
+})
+
 slackController.on('direct_message', async function(bot, message) {
-  bot.reply(message,'I heard a message')
+  bot.reply(message,'I heard a direct message')
 })
 
 slackController.on('direct_mention', async function(bot, message) {
-  bot.reply(message,'I heard a direct message')
+  bot.reply(message,'I heard a direct mention')
 })
 
 slackController.hears('webhook', 'direct_message', async function(bot, message) {
