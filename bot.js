@@ -42,7 +42,11 @@ slackController.setupWebserver(process.env.PORT, function(err, webserver){
 })
 
 slackController.hears('hi', 'direct_message', function(bot, message) {
-    bot.reply(message,'Hello.')
+  bot.reply(message,'Hello.')
+})
+
+slackController.on('direct_message', function(bot, message) {
+  bot.reply(message,'I heard a message')
 })
 
 slackController.hears('webhook', 'direct_message', function(bot, message) {
