@@ -45,6 +45,10 @@ slackController.hears('hi', 'direct_message', async function(bot, message) {
   bot.reply(message,'Hello.')
 })
 
+slackController.hears('aa', 'direct_message', async function(bot, message) {
+  bot.reply(message,'fuck.')
+})
+
 slackController.on('direct_message', async function(bot, message) {
   bot.reply(message,'I heard a message')
 })
