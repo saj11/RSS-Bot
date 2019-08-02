@@ -41,11 +41,6 @@ slackController.setupWebserver(process.env.PORT, function(err, webserver){
     )
 })
 
-slackController.on('message', function(bot, message) {
-  bot.replyAcknowledge() 
-  bot.reply(message,'Hello.')
-})
-
 slackController.hears('hi', 'direct_message', function(bot, message) {
     bot.reply(message,'Hello.')
 })
@@ -70,24 +65,3 @@ slackController.on('slash_command', function(bot, message){
           bot.reply(message, 'Did not recognize that command, sorry!')
       }
 })
-
-/*
-rtm.on('message', async message => {
-    if(message.text){
-        try{
-            switch(message.subtype){
-                case 'channel_join':
-                        await rtm.sendMessage(`${message.user} said: ${message.text}`, message.channel)
-            }
-        }
-        console.log('###### - message')
-        console.log(message)
-        console.log(message.text)
-        const userName = getUsernameFromId(message.user) 
-        if(userName != robotName){
-            await rtm.sendMessage(`${userName} said: ${message.text}`, message.channel)
-            //await console.log(obtainFeed('https://medium.com/feed/tag/js'))
-        }
-    }
-})
-*/
